@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: db #this is the name that our application listens on
+  # services should be named based on what the other application is looking for.
+  #we know that the worker app tries to connect to a service on the host named
+  #db. so service should be named db.
+  labels:
+    name: db-service
+    app: demo-voting-app
+spec:
+  ports:
+  - port: 5432
+    targetPort: 5432
+  selector: #below are the keys in the yml file under labels in metadata.
+    name: postgres-pod
+    app: demo-voting-app

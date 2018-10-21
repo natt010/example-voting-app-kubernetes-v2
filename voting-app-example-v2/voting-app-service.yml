@@ -1,0 +1,20 @@
+#this service is going to expose a voting
+#app to the external world through a load
+#balancer.
+apiVersion: v1
+kind: Service
+metadata:
+  name: voting-service
+  labels:
+    name: voting-service
+    app: demo-voting-app
+spec:
+  type: LoadBalancer #to be able to enable the service to be accessible outside the cluster we must change the type of service to something
+  #else, in this case to Load Balancer
+  ports:
+  - port: 80 #the port that the container exposes.
+    targetPort: 80
+  selector:
+    name: voting-app-pod
+    app: demo-voting-app
+

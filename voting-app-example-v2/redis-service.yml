@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis
+  labels:
+    name: redis-service
+    app: demo-voting-app
+spec:
+  ports:
+  - port: 6379
+    targetPort: 6379
+  selector: #below are the keys in the yml file under labels in metadata.
+    name: redis-pod
+    app: demo-voting-app
+#when creating this service were basically telling the service to listen on port 6379 and forward that to 6379.
+#we need to link this service to one of the pods that we created so that it knows to work with that particular container
+#in that pod.  We do this by using the selector.
