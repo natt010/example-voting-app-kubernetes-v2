@@ -22,7 +22,3 @@ spec:
         image: postgres:9.4
         ports:
         - containerPort: 5432 #the port that postgres listens to by default
-
-
-
-

@@ -15,3 +15,4 @@ spec:
 #when creating this service were basically telling the service to listen on port 6379 and forward that to 6379.
 #we need to link this service to one of the pods that we created so that it knows to work with that particular container
 #in that pod.  We do this by using the selector.
+
